@@ -12,3 +12,10 @@ class Pond(models.Model):
 
     def __str__(self):
         return f'{self.farm} - {self.name}'
+    
+class Hydrophone(models.Model):
+    ip = models.GenericIPAddressField()
+    pond = models.ForeignKey(Pond, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.pond.name} - {self.ip}'
